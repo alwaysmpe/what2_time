@@ -1,7 +1,8 @@
 # What 2 Time?
 
 Reusable timing code that handles unit conversion,
-pretty printing time, total of repeat and re-entrant timers.
+pretty printing time, total of repeat and
+(in future) re-entrant timers.
 
 A timer can be creted and will default to printing
 total time on stopping:
@@ -32,7 +33,7 @@ any callable such as a logger:
 INFO:root:Elapsed time: 1.2577 seconds
 ```
 
-Or instead set no logger handle logging yourself:
+Or instead set no logger and handle logging yourself:
 ```python
 >>> from what2_time import Timer
 >>> t = Timer(logger=None).start()
