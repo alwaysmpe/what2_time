@@ -9,41 +9,41 @@ base_dir = Path(__file__).absolute().parent.parent
 
 
 def is_linux() -> bool:
-    return os.name == 'posix'
+    return os.name == "posix"
 
 
 def call(cmd: list[str]) -> None:
     result = subprocess.run(cmd, cwd=base_dir, check=False)
-    redirect = ' 2>&1' if is_linux() else ''
+    redirect = " 2>&1" if is_linux() else ""
     expanded_command = shlex.join(cmd) + redirect
-    print('command run:', expanded_command)
+    print("command run:", expanded_command)
     if result.returncode == 0:
         return
 
-    raise Exception('Command returned error: ' + expanded_command)
+    raise Exception("Command returned error: " + expanded_command)
 
 
 def pyright(path: Path):
-    call(['basedpyright', str(path), '-p', str(path)])
+    call(["basedpyright", str(path), "-p", str(path)])
 
 
 def ruff(path: Path):
-    call(['ruff', 'check', str(path), '--preview'])
+    call(["ruff", "check", str(path), "--preview"])
 
 
 def darglint(path: Path):
     call([
-        'darglint2',
-        str(path / 'src'),
-        str(path / 'tests'),
+        "darglint2",
+        str(path / "src"),
+        str(path / "tests"),
     ])
 
 
 def pylama(path: Path):
     call([
-        'pylama',
-        str(path / 'src'),
-        str(path / 'tests'),
+        "pylama",
+        str(path / "src"),
+        str(path / "tests"),
     ])
 
 

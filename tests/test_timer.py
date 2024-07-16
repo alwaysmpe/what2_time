@@ -1,7 +1,8 @@
-from what2_time import Timer
-from what2_time.timer import TimeCounter
-from what2 import dbg
 import time
+
+from what2 import dbg
+from what2_time import MetaTimer, Timer
+from what2_time.counter import TimeCounter
 
 
 def is_approx(val: float, target: float):
@@ -21,3 +22,15 @@ def test_single_second_timer():
     elapsed = t.stop()
     dbg(elapsed)
     assert is_approx(elapsed, 1)
+
+
+def test_simple_meta():
+    with MetaTimer("metaT"):
+        time.sleep(1)
+    elapsed = MetaTimer.get_meta_duration("metaT")
+    assert is_approx(elapsed, 1)
+
+    with MetaTimer("metaT"):
+        time.sleep(1)
+    elapsed = MetaTimer.get_meta_duration("metaT")
+    assert is_approx(elapsed, 2)

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "what2-time"
-version = "0.2.1"
+version = "0.3.0"
 description = "Reusable timing code that handles unit conversion, pretty printing time, total of repeat and re-entrant timers."
 authors = ["Marc Edwards <marc@mlwhat.com>"]
 license = "MIT"
@@ -44,18 +44,19 @@ addopts = """\
 
 [tool.pyright]
 
+reportImplicitOverride = true
 typeCheckingMode  = "strict"
 exclude = [
     "**/.ipynb_checkpoints/*",
     "**/.venv/",
-    "tasks.py",
-    "exp.py",
+    "./tasks.py",
+    "./exp.py",
 ]
 ignore =  [
     "**/.ipynb_checkpoints/*",
     "**/.venv/",
-    "tasks.py",
-    "exp.py",
+    "./tasks.py",
+    "./exp.py",
 ]
 
 [tool.ruff]
@@ -104,6 +105,8 @@ ignore = [
     "TD003",
     "S101",
     "CPY001",
+    "D105",
+    "D107",
     "D200",
     "D203",
     "D205",
@@ -119,6 +122,7 @@ ignore = [
     "RET504",
     "PD901",
     "SIM108",
+    "PLW1641", # implement eq without hash - what if it's mutable?
 ]
 
 [tool.ruff.lint.per-file-ignores]
@@ -136,7 +140,7 @@ ignore = [
 [tool.ruff.lint.flake8-quotes]
 
 avoid-escape = false
-inline-quotes = "single"
+inline-quotes = "double"
 multiline-quotes = "double"
 
 [tool.ruff.lint.flake8-tidy-imports]
@@ -146,7 +150,7 @@ ban-relative-imports = "all"
 [tool.ruff.lint.isort]
 
 force-sort-within-sections = true
-forced-separate = ["what2_time", "tests", "pytest", "_pytest"]
+forced-separate = ["what2*", "tests", "pytest", "_pytest"]
 
 [tool.ruff.lint.pydocstyle]
 

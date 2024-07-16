@@ -1,6 +1,7 @@
 """Package containing various timers."""
 
 __all__ = [
-    'Timer',
+    "MetaTimer",
+    "Timer",
 ]
-from what2_time.timer import Timer
+from what2_time.timer import MetaTimer, Timer
