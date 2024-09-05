@@ -23,8 +23,8 @@ pytest-order = "^1.2.1"
 pytest-gitignore = "^1.3"
 ruff = "^0.3.4"
 pylama = "^8.4.1"
-setuptools = "^70.2.0"
-basedpyright = "^1.12.6"
+setuptools = "^70.3.0"
+basedpyright = "^1.13.3"
 toml = "^0.10.2"
 darglint2 = "^1.8.2"
 what2 = "*"
@@ -128,6 +128,7 @@ ignore = [
 [tool.ruff.lint.per-file-ignores]
 
 "tests/*" = [
+    "PLC2701", # private imports - _pytest is stupid.
     "D",
     "ANN",
     "PLR2004",

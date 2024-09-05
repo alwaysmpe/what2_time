@@ -66,3 +66,7 @@ a `MetaTimer` can be used:
 >>> print(MetaTimer.get_meta_duration("MetaT"))
 2.00162006
 ```
+
+Note - the package doesn't attempt to
+protect against multiple timers with the same
+name running in parallel - yet.
